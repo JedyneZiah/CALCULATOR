@@ -8,7 +8,10 @@
 		
 		
 	</head>
+
+	
 	<body>
+		
 		<div id="calculator">
 			<div id="result">0</div>
 			<button onclick="cls();">AC</button>
@@ -26,13 +29,18 @@
 			<button onclick="calc(this.innerHTML);">-</button>
 			<button onclick="num(this.innerHTML);">0</button>
 			<button onclick="num(this.innerHTML);">.</button>
-			<button onclick="total();">=</button>
+		
 			<button onclick="calc(this.innerHTML);">+</button>
+			<button onclick="calc(this.innerHTML);">^</button>
+			<button onclick="total();">=</button>
+			<button onclick="calc(this.innerHTML);">%</button>
 			
+
 			<div id="smallResult"></div>
 		</div>
 
 		<style>
+
 
 * {
 	padding: 0;
@@ -56,7 +64,7 @@ body {
 	margin: auto;
 	margin-top: 20px;
 	display: block;
-	height: auto;
+	height: 500px;
 	width: 278px;
 	background-color: rgb(247, 223, 223);
 	font-size: 0.8em;
@@ -135,16 +143,22 @@ button:nth-child(6),
 button:nth-child(10),
 button:nth-child(14),
 button:nth-child(17),
-button:nth-child(18) {
+button:nth-child(18),
+button:nth-child(19),
+button:nth-child(20) {
 	background: #f858c3;
 	color: white;
+	float: right;
 }
+
 
 button:nth-child(6):active,
 button:nth-child(10):active,
 button:nth-child(14):active,
 button:nth-child(17):active,
-button:nth-child(18):active {
+button:nth-child(18):active,
+button:nth-child(19):active,
+button:nth-child(20):active {
 	background: #218d7e;
 }
 
@@ -313,6 +327,14 @@ function magic(a, b, oper) {
 			tot = +a * +b;
 			cal_done = true;
 			break;
+		case '%':
+            tot = +a % +b;  
+            cal_done = true;
+            break;
+		case '^':
+			tot = Math.pow(+a, +b);
+			cal_done = true;
+			break;
 		default:
 			return false;
 	}
@@ -360,6 +382,8 @@ document.onkeyup = function(e) {
 	if (e.which == 106) calc('*');
 	if (e.which == 107) calc('+');
 	if (e.which == 109) calc('-');
+	if (e.key === '^') calc('^');
+	if (e.key === '%') calc('%');
 
 	if (e.which == 13) total();
 
@@ -371,4 +395,4 @@ document.onkeyup = function(e) {
 
 		</script>
 	</body>
-</html>
+</html
